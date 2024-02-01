@@ -14,6 +14,9 @@ import userRoutes from "./routes/users.ts";
 import postRoutes from "./routes/posts.ts";
 import { verifyToken } from "./middleware/auth.ts";
 import { createPost } from "./controllers/posts.ts";
+import User from "./models/User.ts";
+import Post from "./models/Post.ts";
+import { users, posts } from "./data/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -58,5 +61,8 @@ mongoose
   )
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    /* ADD DATA ONE TIME */
+    // User.insertMany(users);
+    // Post.insertMany(posts);
   })
   .catch((err: string) => console.log(`Error: ${err}`));
