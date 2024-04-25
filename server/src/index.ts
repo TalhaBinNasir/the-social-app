@@ -52,7 +52,7 @@ app.use("/posts", postRoutes);
 const PORT = process.env.PORT || 6001;
 
 app.use(cors({
-  origin: 'https://the-social-app-six.vercel.app'
+  origin: 'https://the-social-app-fe.vercel.app/'
 }));
 
 mongoose
