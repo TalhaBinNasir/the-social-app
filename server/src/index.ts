@@ -51,6 +51,10 @@ app.use("/posts", postRoutes);
 
 const PORT = process.env.PORT || 6001;
 
+app.use(cors({
+  origin: 'http://the-social-app-six.vercel.app'
+}));
+
 mongoose
   .connect(
     process.env.MONGO_URL as string,
