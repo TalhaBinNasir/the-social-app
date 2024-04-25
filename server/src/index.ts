@@ -51,15 +51,10 @@ app.use("/posts", postRoutes);
 const PORT = process.env.PORT || 6001;
 
 const corsOptions = {
-  origin: "https://the-social-app-fe.vercel.app/",
+  origin: "https://the-social-app-fe.vercel.app",
 };
 
 app.use(cors(corsOptions));
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
 
 mongoose
   .connect(
