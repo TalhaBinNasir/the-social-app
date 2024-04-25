@@ -27,7 +27,6 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 const storage = multer.diskStorage({
@@ -51,9 +50,11 @@ app.use("/posts", postRoutes);
 
 const PORT = process.env.PORT || 6001;
 
-app.use(cors({
-  origin: 'https://the-social-app-fe.vercel.app/'
-}));
+const corsOptions = {
+  origin: "https://the-social-app-fe.vercel.app/",
+};
+
+app.use(cors(corsOptions));
 
 mongoose
   .connect(
